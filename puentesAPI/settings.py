@@ -12,7 +12,7 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 import pymysql
 pymysql.install_as_MySQLdb()
 from pathlib import Path
-
+import pyodbc
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -77,15 +77,32 @@ WSGI_APPLICATION = 'puentesAPI.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.2/ref/settings/#databases
 
+#print(pyodbc.drivers())
+#try:
+# URI_MSSQL = '127.0.0.1:1433'  # local
+# USER_MSSQL= ''
+# PASS_MSSQL = ''
+#
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'sql_server.pyodbc',
+#         'NAME': 'pte_inventario',
+#         'USER': USER_MSSQL,
+#         'PASSWORD': PASS_MSSQL,
+#         #'driver': 'SQL Server',
+#         'OPTIONS': {
+#             'host_is_server': True,
+#             'DRIVER': 'SQL Server Native Client 11.0',
+#         }
+#     }
+#
+# }
 
-PORT_MDB = '11001' # local
-#URI_NEO4J = 'bolt://0.0.0.0'# Servidor
+# except:
+# print("error")
 URI_MDB = 'http://localhost:3306'# local
 USER_MDB= 'root'
 PASS_MDB = 'admin'
-
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
